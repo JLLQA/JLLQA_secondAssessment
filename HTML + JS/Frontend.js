@@ -1,16 +1,15 @@
 const name = document.querySelector("#Name");
-const firstNumber = document.querySelector("#firstNumber");
-const secondNumber = document.querySelector("#secondNumber");
-const result = document.querySelector('#result');
+const firstItem = document.querySelector("#firstItem");
+const secondItem = document.querySelector("#secondItem");
 const display = document.querySelector("#display");
 
 const getValues = () => {
-    return [Number.parseFloat(firstNumber.value), Number.parseFloat(secondNumber.value)];
+    return [String(firstItem.value), String(secondItem.value), String(name.value)];
 }
 
-const printToHistory = (num1, num2, operator, result) => {
+const printToHistory = (item1, item2, result) => {
     const p = document.createElement("p"); 
-    const text = document.createTextNode(`${num1} ${operator} ${num2} = ${result}`);
+    const text = document.createTextNode(`${result} is ${item1} & ${item2}`);
 
     p.appendChild(text);
     display.appendChild(p);
@@ -18,18 +17,15 @@ const printToHistory = (num1, num2, operator, result) => {
 
 
 // methods 
-const add = () => {
-    const [first, second] = getValues();
-    const computation = first + second;
-    result.value = computation;
-    printToHistory(first, second, "+", computation);
+const creation = () => {
+    const [first, second, nam] = getValues();
+    printToHistory(first, second, nam);
 }
 
 
 const resetValues = () => {
-    firstNumber.value = "";
-    secondNumber.value = "";
-    result.value = "";
+    firstItem.value = "";
+    secondItem.value = "";
 }
 
 const clearHistory = () => {
