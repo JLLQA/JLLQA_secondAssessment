@@ -47,11 +47,9 @@ public class BMController {
 	}
 
 	// DELETE
-	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<Boolean> removeBM(@PathVariable Long id) {
-		return this.service.remove(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT):
-			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		
+	@DeleteMapping("/remove/{index}")
+	public boolean removeBM(@PathVariable Long index) {
+		return this.service.remove(index);
 	}
 
 	// UPDATE

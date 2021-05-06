@@ -54,6 +54,8 @@ public class BMServiceDB implements BMService {
 
 	@Override
 	public BM getBMByName(String name) {
+		//Optional<Marvel> optionalCharacter = this.repo.findOne();
+		//return optionalCharacter.get();
 		return this.repo.findByName(name);
 	}
 
