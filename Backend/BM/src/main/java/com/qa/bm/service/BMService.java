@@ -8,11 +8,11 @@ public interface BMService  {
 	
 	// CRUD OPERATIONS
 	
-	BM create(BM m); 
+	BM create(BM bm); 
 	List<BM> getAll();
 	BM getById(Long id); 
 	boolean remove(Long id); 
 	BM update(Long id, BM newBM);
-	BM getCharacterByName(String name); 
+	BM getBMByName(String name); 
 
 }

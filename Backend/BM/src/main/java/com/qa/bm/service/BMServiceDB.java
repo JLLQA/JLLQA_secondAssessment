@@ -18,8 +18,8 @@ public class BMServiceDB implements BMService {
 	}
 
 	@Override
-	public BM create(BM m) {
-		return this.repo.save(m);
+	public BM create(BM bm) {
+		return this.repo.saveAndFlush(bm);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class BMServiceDB implements BMService {
 	@Override
 	public boolean remove(Long id) {
 		this.repo.deleteById(id);
-		return this.repo.existsById(id);
+		return !this.repo.existsById(id);
 	}
 
 	@Override
@@ -53,10 +53,10 @@ public class BMServiceDB implements BMService {
 	}
 
 	@Override
-	public BM getCharacterByName(String name) {
+	public BM getBMByName(String name) {
 		//Optional<Marvel> optionalCharacter = this.repo.findOne();
 		//return optionalCharacter.get();
-		return null;
+		return this.repo.findByName(name);
 	}
 
 }

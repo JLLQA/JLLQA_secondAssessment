@@ -29,57 +29,38 @@ public class BMController {
 	// CRUD
 
 	// CREATE
-//	{
-//	    "id":1,
-//	    "name":"Tim",
-//	    "type1":"cheese",
-//	    "type2":"tomato",
-//	    "edible":true 
-//	}
 	@PostMapping("/create")
-	public ResponseEntity<BM> createCharacter(@RequestBody BM marvel) {
-		return new ResponseEntity<BM>(this.service.create(marvel), HttpStatus.CREATED);
+	public ResponseEntity<BM> createBM(@RequestBody BM bm) {
+		return new ResponseEntity<BM>(this.service.create(bm), HttpStatus.CREATED);
 	}
 
 	// READ
 	@GetMapping("/getAll")
-	public ResponseEntity<List<BM>> getMarvel() {
+	public ResponseEntity<List<BM>> getBM() {
 		return ResponseEntity.ok(this.service.getAll());
 	}
 
 	// READ ONE
 	@GetMapping("/getOne/{index}")
-	public ResponseEntity<BM> getCharacterById(@PathVariable Long index) {
+	public ResponseEntity<BM> getBMById(@PathVariable Long index) {
 		return ResponseEntity.ok(this.service.getById(index));
 	}
 
 	// DELETE
 	@DeleteMapping("/remove/{index}")
-	public BM removeCharacter(@PathVariable Long index) {
-		this.service.remove(index);
-		return this.service.getById(index);
+	public boolean removeBM(@PathVariable Long index) {
+		return this.service.remove(index);
 	}
 
 	// UPDATE
-//	{
-//	    "id":1,
-//	    "name":"Jim",
-//	    "type1":"cheese",
-//	    "type2":"tomato",
-//	    "edible":true 
-//	}
 	@PutMapping("/update/{id}")
-	public ResponseEntity<BM> updateCharacter(@PathVariable Long id, @RequestBody BM newObject) {
+	public ResponseEntity<BM> updateBM(@PathVariable Long id, @RequestBody BM newObject) {
 		return new ResponseEntity<BM>(this.service.update(id, newObject), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/findByName")
 	public BM findByName(@PathParam("name") String name) {
-		for (BM m : this.service.getAll()) {
-			System.out.println(m.getName());
-		}
-		System.out.println(name);
-		return null;
+		return this.service.getBMByName(name);
 	}
 
 }
