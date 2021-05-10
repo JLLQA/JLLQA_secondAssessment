@@ -103,24 +103,24 @@ const createBM = () => {
 //         });
 // }
 
-// const deleteBM = () => {
-//     const DELETE_VALUE = DELETE.value;
+const deleteBM = () => {
+    const DELETE_VALUE = DELETE.value;
 
-//     const delURL = `http://localhost:8080/remove/${DELETE_VALUE}`;
+    const delURL = `http://localhost:8080/remove/${DELETE_VALUE}`;
 
-//     console.log(delURL)
+    console.log(delURL)
 
-//     axios({
-//         method: "delete", url: delURL, headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
-//     })
-//         .then((response) => {
-//             console.log(response);
-//             window.location.reload();
-//         })
-//         .catch((err) => {
-//             console.error(err.response);
-//         });
-// }
+    axios({
+        method: "delete", url: delURL, headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
+    })
+        .then((response) => {
+            console.log(response);
+            window.location.reload();
+        })
+        .catch((err) => {
+            console.error(err.response);
+        });
+}
 
 const printToScreen = (information) => {
     const p = document.createElement("p");
