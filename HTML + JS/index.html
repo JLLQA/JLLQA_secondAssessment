@@ -32,6 +32,7 @@
 
     <div class="container">
         <div style="width: 100%;">
+            <!-- LHS of screen -->
             <div style="float:left; width: 40%">
                 <h2 class="text-center">Let's Make BoorgorMons</h2>
                 <h4 class="text-center">Gotta Eat 'Em All</h4>
@@ -42,13 +43,12 @@
                         <input type="text" class="form-control" id="Name" placeholder="Enter Name: " />
                     </div>
                 </div>
-
                 <br>
 
                 <div class="row">
                     <div class="col-2">
-                        <input list="browsers" id="firstItem" placeholder="Choose 1st Item" />
-                        <datalist id="browsers">
+                        <input list="items" id="firstItem" placeholder="Choose 1st Item" />
+                        <datalist id="items">
                             <option value="Bun">
                             <option value="Condiment">
                             <option value="Lettuce">
@@ -64,11 +64,11 @@
 
                 <div class="row">
                     <div class="col-2">
-                        <input list="browsers" id="secondItem" placeholder="Choose 2nd Item" />
+                        <input list="items" id="secondItem" placeholder="Choose 2nd Item" />
                     </div>
                 </div>
                 <br>
-                
+
                 <div class="row">
                     <div class="col-6">
                         <label for="edible">Are edible?</label>
@@ -82,41 +82,99 @@
 
                 <div class="row">
                     <div class="text-center">
-                        <button class="btn btn-primary" id="create" onclick="creation()"> Create BurgerMon</button>
+                        <button class="btn btn-success" id="create" onclick="createBM()"> Create BM</button>
+                        <button type="reset" class="btn btn-danger" onclick="resetValues();">Clear Fields</button>
+
                     </div>
                     <div class="alert" id="onSuccess"></div>
                 </div>
-
                 <br>
 
-                <div class="text-center">
-                    <div class="row">
-                        <button type="reset" class="btn btn-danger" onclick="resetValues();">Clear Current</button>
-                        <button type="reset" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#loadModal">Clear All</button>
+                <div class="row">
+                    <div class="text-center">
+                        <button type="reset" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#updateModal">Update BM</button>
+                        <button type="reset" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Delete BM</button>
                     </div>
                 </div>
 
-                <div class="modal fade" id="loadModal" tabindex="-1" aria-labelledby="loadModalLabel"
+                <!-- Popup -->
+                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="loadModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="loadModalLabel">You are about to clear everything</h5>
+                                <h5 class="modal-title" id="loadModalLabel">Which BM would you like to update?</h5>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="update" placeholder="Enter id: " />
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="uName" placeholder="Enter Name: " />
+                            </div>
+                            <div class="col-6">
+                                <input list="items" id="uFirstItem" placeholder="Choose 1st Item" />
+                            </div>
+                            <div class="col-6">
+                                <input list="items" id="uSecondItem" placeholder="Choose 2nd Item" />
+                            </div>
+                            <div class="col-6">
+                                <label for="edible">Are edible?</label>
+                                <select id="edible" name="uEdible" size="1">
+                                    <option value="yes">Yes</option>
+                                    <option value="no" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                onclick="deleteBM();">Update</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="loadModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loadModalLabel">Which BM would you like to delete?</h5>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="delete" placeholder="Enter id: " />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#confirmModal">Delete</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="loadModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loadModalLabel">You are about to delete this BM</h5>
                             </div>
                             <div class="modal-header">
                                 <p>Are you sure you want to do this?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-                                    onclick="clearHistory();">Yes</button>
+                                    onclick="deleteBM();">Yes</button>
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
+            <!-- RHS of screen -->
             <div style="float:right;">
                 <p>Current Boorgers</p>
                 <div id="display"></div>
@@ -124,9 +182,15 @@
         </div>
     </div>
 
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
+    <!-- My js -->
     <script src="./index.js"></script>
 </body>
 
