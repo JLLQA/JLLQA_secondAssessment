@@ -3,6 +3,13 @@ const NAME = document.querySelector("#Name");
 const FIRSTITEM = document.querySelector("#firstItem");
 const SECONDITEM = document.querySelector("#secondItem");
 const EDIBLE = document.querySelector("#edible");
+
+const UNAME = document.querySelector("#uName");
+const UFIRSTITEM = document.querySelector("#uFirstItem");
+const USECONDITEM = document.querySelector("#uSecondItem");
+const UEDIBLE = document.querySelector("#uEdible");
+const UPDATE = document.querySelector("#update");
+
 const DELETE = document.querySelector("#delete");
 const ALERT = document.querySelector("#onSuccess");
 const DISPLAY = document.querySelector("#display");
@@ -65,43 +72,49 @@ const createBM = () => {
         });
 }
 
-// const updateBM = () => {
-//     const UPDATE_VALUE = UPDATE.value;
-//     const NAME_VALUE = NAME.value;
-//     const FIRST_VALUE = FIRSTITEM.value;
-//     const SECOND_VALUE = SECONDITEM.value;
-//     let EDIBLE_VALUE;
-//     if (EDIBLE.value == "no") {
-//         EDIBLE_VALUE = false;
-//     }
-//     else {
-//         EDIBLE_VALUE = true;
-//     }
+const updateBM = () => {
 
-//     console.log(`Name:${NAME_VALUE} 1st:${FIRST_VALUE} 2nd:${SECOND_VALUE} E:${EDIBLE_VALUE}`);
+    const UPDATE_VALUE = UPDATE.value;
+    const NAME_VALUE = UNAME.value;
+    const FIRST_VALUE = UFIRSTITEM.value;
+    const SECOND_VALUE = USECONDITEM.value;
+    console.log(UPDATE_VALUE);
+    console.log(NAME_VALUE);
+    console.log(FIRST_VALUE);
+    console.log(SECOND_VALUE);
+    let EDIBLE_VALUE;
 
-//     let obj = {
-//         name: NAME_VALUE,
-//         type1: FIRST_VALUE,
-//         type2: SECOND_VALUE,
-//         edible: EDIBLE_VALUE
-//     };
+    if (UEDIBLE.value == "no") {
+        EDIBLE_VALUE = false;
+    }
+    else {
+        EDIBLE_VALUE = true;
+    }
 
-//     const upURL = `http://localhost:8080/update/${UPDATE_VALUE}`;
+    console.log(`Name:${NAME_VALUE} 1st:${FIRST_VALUE} 2nd:${SECOND_VALUE} E:${EDIBLE_VALUE}`);
 
-//     console.log(upURL)
+    let obj = {
+        name: NAME_VALUE,
+        type1: FIRST_VALUE,
+        type2: SECOND_VALUE,
+        edible: EDIBLE_VALUE
+    };
 
-//     axios({
-//         method: "delete", url: upURL, data: JSON.stringify(obj), headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
-//     })
-//         .then((response) => {
-//             console.log(response);
-//             window.location.reload();
-//         })
-//         .catch((err) => {
-//             console.error(err.response);
-//         });
-// }
+    const upURL = `http://localhost:8080/update/${UPDATE_VALUE}`;
+
+    console.log(upURL)
+
+    axios({
+        method: "put", url: upURL, data: JSON.stringify(obj), headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
+    })
+        .then((response) => {
+            console.log(response);
+            window.location.reload();
+        })
+        .catch((err) => {
+            console.error(err.response);
+        });
+}
 
 const deleteBM = () => {
     const DELETE_VALUE = DELETE.value;
@@ -130,8 +143,8 @@ const printToScreen = (information) => {
         EDIBLE_OUT = no;
     }
 
-    // const text = document.createTextNode(`${information.id}. Name: ${information.name} Types: ${information.type1} & ${information.type2} Edible: ${information.edible}`);
-    const text = document.createTextNode(`${information.id}. Name: ${information.name} Types: ${information.type1} & ${information.type2} Edible: ${EDIBLE_OUT}`);
+    const text = document.createTextNode(`${information.id}. Name: ${information.name} Types: ${information.type1} & ${information.type2} Edible: ${information.edible}`);
+    // const text = document.createTextNode(`${information.id}. Name: ${information.name} Types: ${information.type1} & ${information.type2} Edible: ${EDIBLE_OUT}`);
 
     p.appendChild(text);
     DISPLAY.appendChild(p);
