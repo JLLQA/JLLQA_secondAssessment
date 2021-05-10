@@ -1,0 +1,42 @@
+/* ID = # */
+/* CLASS = . */
+/* ELEMENT NAME */
+/* ELEMENT_NAME #/. */
+
+a {
+    color: yellow;
+    font-family: cursive;
+}
+
+h2{
+    color: yellow;
+    text-shadow: -1px -1px 0 darkblue, 1px -1px darkblue, -1px 1px darkblue, 1px 1px darkblue;
+    font-style: oblique;
+    font-family: "Copperplate", fantasy;
+}
+
+h4{
+    color: white;
+    text-shadow: -1px -1px 0 darkblue, 1px -1px darkblue, -1px 1px darkblue, 1px 1px darkblue;
+    font-style: oblique;
+    font-family:"Copperplate", fantasy;
+}
+
+
+#inline {
+    font-size: xx-large;
+}
+
+section p.blue {
+    background-color: cyan;
+}
+
+#paintME {
+    color:black;
+    font-size: xx-small;
+}
+
+.anotherOne{
+    text-align: end;
+
+}
