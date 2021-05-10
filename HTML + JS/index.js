@@ -138,13 +138,14 @@ const deleteBM = () => {
 const printToScreen = (information) => {
     const p = document.createElement("p");
     console.log(information.edible);
+    //fix this so it says yes or no
     let EDIBLE_OUT;
     if (information.edible == "false") {
         EDIBLE_OUT = no;
     }
 
-    const text = document.createTextNode(`${information.id}. Name: ${information.name} Types: ${information.type1} & ${information.type2} Edible: ${information.edible}`);
-    // const text = document.createTextNode(`${information.id}. Name: ${information.name} Types: ${information.type1} & ${information.type2} Edible: ${EDIBLE_OUT}`);
+    const text = document.createTextNode(`${information.id}. Name: ${information.name} Items: ${information.type1} & ${information.type2} Edible: ${information.edible}`);
+    // const text = document.createTextNode(`${information.id}. Name: ${information.name} Items: ${information.type1} & ${information.type2} Edible: ${EDIBLE_OUT}`);
 
     p.appendChild(text);
     DISPLAY.appendChild(p);
@@ -154,6 +155,7 @@ const resetValues = () => {
     NAME.value = "";
     FIRSTITEM.value = "";
     SECONDITEM.value = "";
+    EDIBLE.value = "";
 }
 
 const clearScreen = () => {

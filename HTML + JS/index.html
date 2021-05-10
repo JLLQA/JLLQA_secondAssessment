@@ -73,8 +73,9 @@
                     <div class="col-6">
                         <label for="edible">Are edible?</label>
                         <select id="edible" name="edible" size="1">
+                            <option value="" selected></option>
                             <option value="yes">Yes</option>
-                            <option value="no" selected>No</option>
+                            <option value="no">No</option>
                         </select>
                     </div>
                 </div>
@@ -99,7 +100,7 @@
                     </div>
                 </div>
 
-                <!-- Popup -->
+                <!-- Popups -->
                 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="loadModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -122,8 +123,9 @@
                             <div class="col-6">
                                 <label for="edible">Are edible?</label>
                                 <select id="uEdible" name="Edible" size="1">
+                                    <option value="" selected></option>
                                     <option value="yes">Yes</option>
-                                    <option value="no" selected>No</option>
+                                    <option value="no">No</option>
                                 </select>
                             </div>
                             <div class="modal-footer">
@@ -176,7 +178,7 @@
             </div>
             <!-- RHS of screen -->
             <div style="float:right;">
-                <p>Current Boorgers</p>
+                <h4>Current Boorgers:</h4>
                 <div id="display"></div>
             </div>
         </div>
