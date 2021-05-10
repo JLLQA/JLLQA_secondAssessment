@@ -84,6 +84,7 @@
                     <div class="text-center">
                         <button class="btn btn-primary" id="create" onclick="creation()"> Create BurgerMon</button>
                     </div>
+                    <div class="alert" id="onSuccess"></div>
                 </div>
 
                 <br>
@@ -91,9 +92,6 @@
                 <div class="text-center">
                     <div class="row">
                         <button type="reset" class="btn btn-danger" onclick="resetValues();">Clear Current</button>
-                    </div>
-                    <br>
-                    <div class="row">
                         <button type="reset" class="btn btn-success" data-bs-toggle="modal"
                             data-bs-target="#loadModal">Clear All</button>
                     </div>
@@ -104,12 +102,15 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="loadModalLabel">You are about to clear BurgerMon</h5>
+                                <h5 class="modal-title" id="loadModalLabel">You are about to clear everything</h5>
+                            </div>
+                            <div class="modal-header">
+                                <p>Are you sure you want to do this?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-success" data-bs-dismiss="modal"
-                                    onclick="clearHistory();">Clear</button>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    onclick="clearHistory();">Yes</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                             </div>
                         </div>
                     </div>
