@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boorgor Builder</title>
+    <link href="./index.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="headermain">
+        <h1>WELCOME TO WCDINALDS</h1>
+        <p>Temp</p>
+    </div>
+    <div class="navbar">
+        <a href="index.html">Create</a>
+        <a href="update.html">Update</a>
+        <a href="delete.html">Delete</a>
+    </div>
+    <div class="row">
+        <div class="side">
+            <h1 class="header1">Let's Make BoorgorMons</h1>
+            <h2 class="header2">Gotta Eat 'Em All</h2>
+            <div class="fields">
+                <div>
+                    <input type="text" class="form-control" id="Name" placeholder="Enter Name: " />
+                </div><br>
+                <div>
+                    <input list="items" id="firstItem" placeholder="Choose 1st Item" />
+                </div><br>
+                <div>
+                    <input list="items" id="secondItem" placeholder="Choose 2nd Item" />
+                    <datalist id="items">
+                    <option value="Bun">
+                    <option value="Condiment">
+                    <option value="Lettuce">
+                    <option value="Tomato">
+                    <option value="Onion">
+                    <option value="Bacon">
+                    <option value="Cheese">
+                    <option value="Patty">
+                </datalist>
+                </div><br>
+                <div>
+                    <label for="edible"><b>Are they edible?</b></label>
+                    <select id="edible" name="edible" size="1">
+                    <option value="" selected></option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                </div><br>
+            </div><br>
+            <div class="button">
+                <button class="success" id="create" onclick="createBM()"> Create BM</button><br><br>
+                <button class="danger" onclick="resetValues();">Clear Fields</button><br><br>
+            </div>
+            <br>
+            <div class="alert" id="onSuccess"></div>
+        </div>
+
+        <div class="main">
+            <h2 class="header2">Current BMs:</h2>
+            <div class="display" id="display"></div>
+            <br>
+        </div>
+    </div>
+    <div class="footer">
+        <h2>Jordan Lewis</h2>
+    </div>
+
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <!-- My JS -->
+    <script src="./index.js"></script>
+</body>
+
+</html>

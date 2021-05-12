@@ -14,9 +14,9 @@ public class BM {
 	private String name;
 	private String type1;
 	private String type2;
-	private boolean edible;
+	private String edible;
 	
-	public BM(String name, String type1, String type2, boolean edible) {
+	public BM(String name, String type1, String type2, String edible) {
 		super();
 		this.name = name;
 		this.type1 = type1;
@@ -59,11 +59,11 @@ public class BM {
 		this.type2 = type2;
 	}
 
-	public boolean isEdible() {
+	public String getEdible() {
 		return edible;
 	}
 
-	public void setEdible(boolean edible) {
+	public void setEdible(String edible) {
 		this.edible = edible;
 	}
 
