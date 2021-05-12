@@ -7,7 +7,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
 @SpringBootTest
-public class BMDomainTest {
+public class BMDomainIntegrationTest {
 
 	@Test
 	public void testEquals() {

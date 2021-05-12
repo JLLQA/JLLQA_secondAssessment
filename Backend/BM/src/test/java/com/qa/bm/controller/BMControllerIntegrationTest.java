@@ -30,7 +30,7 @@ import com.qa.bm.domain.BM;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureMockMvc
 @ActiveProfiles("deve")
-class BmControllerTests {
+public class BMControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMVC;
