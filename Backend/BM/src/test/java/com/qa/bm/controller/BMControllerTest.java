@@ -7,6 +7,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -16,6 +20,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +29,7 @@ import com.qa.bm.domain.BM;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureMockMvc
+@ActiveProfiles("deve")
 class BmControllerTests {
 
 	@Autowired
@@ -45,10 +51,12 @@ class BmControllerTests {
 	@Test
 	@Order(2)
 	void testGetAll() throws Exception {
+		List<BM> bm = new ArrayList<>();
+		bm.add(new BM(1L, "Jim", "Bun", "Tomato", "Yes"));
 		this.mockMVC
 		.perform(get("/getAll").contentType(MediaType.APPLICATION_JSON)
 				.content(this.mapper.writeValueAsString(new BM())))
-		.andExpect(content().json(this.mapper.writeValueAsString(new BM(1L, "James", "Bun", "Tomato", "Yes"))));
+		.andExpect(content().json(this.mapper.writeValueAsString(bm.stream().collect(Collectors.toList()))));
 	}
 
 	@Test
