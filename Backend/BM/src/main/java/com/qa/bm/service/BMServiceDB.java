@@ -28,12 +28,6 @@ public class BMServiceDB implements BMService {
 	}
 
 	@Override
-	public BM getById(Long id) {
-		Optional<BM> optionalCharacter = this.repo.findById(id);
-		return optionalCharacter.get();
-	}
-
-	@Override
 	public boolean remove(Long id) {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
@@ -47,14 +41,9 @@ public class BMServiceDB implements BMService {
 		newM.setName(newBM.getName());
 		newM.setType1(newBM.getType1());
 		newM.setType2(newBM.getType2());
-		newM.setEdible(newBM.isEdible());
+		newM.setEdible(newBM.getEdible());
 
         return this.repo.saveAndFlush(newM);
-	}
-
-	@Override
-	public BM getBMByName(String name) {
-		return this.repo.findByName(name);
 	}
 
 }

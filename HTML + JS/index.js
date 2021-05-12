@@ -35,13 +35,7 @@ const createBM = () => {
     const NAME_VALUE = NAME.value;
     const FIRST_VALUE = FIRSTITEM.value;
     const SECOND_VALUE = SECONDITEM.value;
-    let EDIBLE_VALUE;
-    if (EDIBLE.value == "no") {
-        EDIBLE_VALUE = false;
-    }
-    else {
-        EDIBLE_VALUE = true;
-    }
+    const EDIBLE_VALUE = EDIBLE.value;
 
     console.log(`Name:${NAME_VALUE} 1st:${FIRST_VALUE} 2nd:${SECOND_VALUE} E:${EDIBLE_VALUE}`);
 
@@ -55,8 +49,11 @@ const createBM = () => {
     // if statement to catch blank values for BM
 
     axios({
-        method: "post", url: "http://localhost:8080/create", data: JSON.stringify(obj), headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
-    })
+            method: "post",
+            url: "http://localhost:8080/create",
+            data: JSON.stringify(obj),
+            headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
+        })
         .then((resp) => {
             console.log(resp);
             ALERT.setAttribute("class", "alert alert-success");
@@ -78,18 +75,7 @@ const updateBM = () => {
     const NAME_VALUE = UNAME.value;
     const FIRST_VALUE = UFIRSTITEM.value;
     const SECOND_VALUE = USECONDITEM.value;
-    console.log(UPDATE_VALUE);
-    console.log(NAME_VALUE);
-    console.log(FIRST_VALUE);
-    console.log(SECOND_VALUE);
-    let EDIBLE_VALUE;
-
-    if (UEDIBLE.value == "no") {
-        EDIBLE_VALUE = false;
-    }
-    else {
-        EDIBLE_VALUE = true;
-    }
+    const EDIBLE_VALUE = UEDIBLE.value;
 
     console.log(`Name:${NAME_VALUE} 1st:${FIRST_VALUE} 2nd:${SECOND_VALUE} E:${EDIBLE_VALUE}`);
 
@@ -105,8 +91,11 @@ const updateBM = () => {
     console.log(upURL)
 
     axios({
-        method: "put", url: upURL, data: JSON.stringify(obj), headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
-    })
+            method: "put",
+            url: upURL,
+            data: JSON.stringify(obj),
+            headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
+        })
         .then((response) => {
             console.log(response);
             window.location.reload();
@@ -124,8 +113,10 @@ const deleteBM = () => {
     console.log(delURL)
 
     axios({
-        method: "delete", url: delURL, headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
-    })
+            method: "delete",
+            url: delURL,
+            headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "APPLICATION/JSON" }
+        })
         .then((response) => {
             console.log(response);
             window.location.reload();
@@ -137,15 +128,8 @@ const deleteBM = () => {
 
 const printToScreen = (information) => {
     const p = document.createElement("p");
-    console.log(information.edible);
-    //fix this so it says yes or no
-    let EDIBLE_OUT;
-    if (information.edible == "false") {
-        EDIBLE_OUT = no;
-    }
 
     const text = document.createTextNode(`${information.id}. Name: ${information.name} Items: ${information.type1} & ${information.type2} Edible: ${information.edible}`);
-    // const text = document.createTextNode(`${information.id}. Name: ${information.name} Items: ${information.type1} & ${information.type2} Edible: ${EDIBLE_OUT}`);
 
     p.appendChild(text);
     DISPLAY.appendChild(p);
@@ -156,6 +140,14 @@ const resetValues = () => {
     FIRSTITEM.value = "";
     SECONDITEM.value = "";
     EDIBLE.value = "";
+}
+
+const resetUpValues = () => {
+    UPDATE.value = "";
+    UNAME.value = "";
+    UFIRSTITEM.value = "";
+    USECONDITEM.value = "";
+    UEDIBLE.value = "";
 }
 
 const clearScreen = () => {

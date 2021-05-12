@@ -42,12 +42,6 @@ public class BMController {
 		return ResponseEntity.ok(this.service.getAll());
 	}
 
-	// READ ONE
-	@GetMapping("/getOne/{index}")
-	public ResponseEntity<BM> getBMById(@PathVariable Long index) {
-		return ResponseEntity.ok(this.service.getById(index));
-	}
-
 	// DELETE
 	@DeleteMapping("/remove/{id}")
 	public ResponseEntity<Boolean> removeBM(@PathVariable Long id) {
@@ -59,11 +53,6 @@ public class BMController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<BM> updateBM(@PathVariable Long id, @RequestBody BM newObject) {
 		return new ResponseEntity<BM>(this.service.update(id, newObject), HttpStatus.ACCEPTED);
-	}
-
-	@GetMapping("/findByName")
-	public BM findByName(@PathParam("name") String name) {
-		return this.service.getBMByName(name);
 	}
 
 }

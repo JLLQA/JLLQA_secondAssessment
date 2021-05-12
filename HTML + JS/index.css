@@ -1,42 +1,130 @@
-/* ID = # */
-/* CLASS = . */
-/* ELEMENT NAME */
-/* ELEMENT_NAME #/. */
-
-a {
-    color: yellow;
-    font-family: cursive;
+* {
+    box-sizing: border-box;
 }
 
-h2{
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+.headermain {
+    padding: 10px;
+    text-align: center;
+    color: #12B00B;
+    text-shadow: -1px -1px 0 #C6FC28, 1px -1px #C6FC28, -1px 1px #C6FC28, 1px 1px #C6FC28;
+    font-size: 40px;
+    background: #b00b69;
+}
+
+.header1 {
+    padding: 10px;
+    text-align: center;
     color: yellow;
     text-shadow: -1px -1px 0 darkblue, 1px -1px darkblue, -1px 1px darkblue, 1px 1px darkblue;
     font-style: oblique;
+    font-size: 60px;
     font-family: "Copperplate", fantasy;
 }
 
-h4{
+.header2 {
+    padding: 10px;
+    text-align: center;
     color: white;
-    text-shadow: -1px -1px 0 darkblue, 1px -1px darkblue, -1px 1px darkblue, 1px 1px darkblue;
+    text-shadow: -1px -1px 0 rgb(176, 176, 197), 1px -1px darkblue, -1px 1px darkblue, 1px 1px darkblue;
     font-style: oblique;
-    font-family:"Copperplate", fantasy;
+    font-size: 40px;
+    font-family: "Copperplate", fantasy;
 }
 
-
-#inline {
-    font-size: xx-large;
+.navbar {
+    display: flex;
+    background-color: #333;
 }
 
-section p.blue {
-    background-color: cyan;
+.navbar a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
 }
 
-#paintME {
-    color:black;
-    font-size: xx-small;
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-.anotherOne{
-    text-align: end;
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.side {
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    justify-content: center;
+}
+
+.fields {
+    padding-left: 36%;
+    padding-bottom: 10px;
+    justify-content: center;
+}
+
+.main {
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+.button {
+    display: flex;
+    padding-left: 15%;
+    height: 50px;
+    justify-content: space-around;
+}
+
+.danger {
+    color: white;
+    background-color: darkred;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.success {
+    color: white;
+    background-color: darkgreen;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.primary {
+    color: white;
+    background-color: darkblue;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.alert {
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border: 3px solid darkgreen;
+    color: green;
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+@media screen and (max-width: 700px) {
+    .row,
+    .navbar {
+        flex-direction: column;
+    }
 }

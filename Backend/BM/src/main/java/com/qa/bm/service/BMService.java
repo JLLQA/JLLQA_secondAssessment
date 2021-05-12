@@ -10,9 +10,7 @@ public interface BMService  {
 	
 	BM create(BM bm); 
 	List<BM> getAll();
-	BM getById(Long id); 
 	boolean remove(Long id); 
 	BM update(Long id, BM newBM);
-	BM getBMByName(String name); 
 
 }
