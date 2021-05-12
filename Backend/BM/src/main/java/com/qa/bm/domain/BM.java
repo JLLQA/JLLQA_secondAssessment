@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class BM {
@@ -11,9 +13,14 @@ public class BM {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull(message = "Name may not be null")
 	private String name;
+	@NotNull(message = "Type may not be null")
 	private String type1;
+	@NotNull(message = "Type may not be null")
 	private String type2;
+	@NotNull(message = "Edible may not be null")
 	private String edible;
 	
 	public BM(String name, String type1, String type2, String edible) {
@@ -22,6 +29,20 @@ public class BM {
 		this.type1 = type1;
 		this.type2 = type2;
 		this.edible = edible;
+	}
+	
+	public BM(Long id, String name, String type1, String type2, String edible) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type1 = type1;
+		this.type2 = type2;
+		this.edible = edible;
+	}
+	
+	public BM(Long id) {
+		super();
+		this.id = id;
 	}
 	
 	public BM() {
@@ -66,7 +87,6 @@ public class BM {
 	public void setEdible(String edible) {
 		this.edible = edible;
 	}
-	
 
 	@Override
 	public int hashCode() {
