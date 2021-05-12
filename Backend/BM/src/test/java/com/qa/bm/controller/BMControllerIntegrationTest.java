@@ -21,6 +21,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +31,7 @@ import com.qa.bm.domain.BM;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureMockMvc
+@Sql(scripts = {"classpath:schema.sql","classpath:data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("deve")
 public class BMControllerIntegrationTest {
 
@@ -45,7 +48,7 @@ public class BMControllerIntegrationTest {
 				.perform(post("/create").contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(new BM("Jim", "Bun", "Tomato", "Yes"))))
 				.andExpect(status().isCreated())
-				.andExpect(content().json(this.mapper.writeValueAsString(new BM(1L, "Jim", "Bun", "Tomato", "Yes"))));
+				.andExpect(content().json(this.mapper.writeValueAsString(new BM(2L, "Jim", "Bun", "Tomato", "Yes"))));
 	}
 
 	@Test

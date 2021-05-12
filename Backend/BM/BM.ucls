@@ -2,7 +2,7 @@
 <class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="com.qa.bm.controller.BMController" project="BM" 
-    file="/BM/src/main/java/com/qa/bm/controller/BMController.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/BM/src/test/resources/com/qa/bm/controller/BMController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="483" y="497"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
