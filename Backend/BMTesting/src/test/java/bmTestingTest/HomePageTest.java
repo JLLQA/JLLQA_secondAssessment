@@ -118,7 +118,7 @@ public class HomePageTest {
 	public void testUpdatePage() throws InterruptedException {
 		driver.get(URL + "/Pages/update.html");
 		UpdatePage bm = PageFactory.initElements(driver, UpdatePage.class);
-		bm.updateBM(4L, "Jim", "Bun", "Tomato", "Yes");
+		bm.updateBM(1L, "Jim", "Bun", "Tomato", "Yes");
 		bm.getUpdate().click();
 		Thread.sleep(3000);
 		WebElement uText = this.driver.findElement(By.className("display"));
@@ -138,16 +138,15 @@ public class HomePageTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testDeletePage() throws InterruptedException {
 		driver.get(URL + "/Pages/delete.html");
 		DeletePage bm = PageFactory.initElements(driver, DeletePage.class);
-		bm.deleteBM(33L);
+		bm.deleteBM(1L);
 		bm.getDeleteBtn().click();
 		Thread.sleep(1000);
 		WebElement createdText = this.driver.findElement(By.className("main"));
 		String check = createdText.getText();
-		assertFalse(check.contains(" 33."));
+		assertFalse(check.contains(" 1."));
 	}
 	
 	@Test
