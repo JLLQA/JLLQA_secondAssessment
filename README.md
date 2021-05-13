@@ -134,7 +134,15 @@ Step 7. Right-click file and select "Run as" --> "Java application"
 
 ## Running the tests
 
-To run the automated unit tests for the system
+To run the automated unit and integration tests for the system
+
+```
+Step 1. Follow the installing steps above to ensure the project is within Eclipse
+Step 2. Right-click the project in the project manager and select "Run as" --> "JUnit Test"
+Step 3. The automated tests will then be carried out
+```
+
+To run the automated user-acceptance tests for the system
 
 ```
 Step 1. Follow the installing steps above to ensure the project is within Eclipse
@@ -182,7 +190,7 @@ Step 5. The application should be initialised when you see Spring in ASCII art a
 * [Java](https://www.java.com/en/) - Back-End Programming Language
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Spring](https://spring.io/) - API Development Platform
-* [SonarQube] (https://www.sonarqube.org/) - Static Analysis
+* [SonarQube](https://www.sonarqube.org/) - Static Analysis
 * [MySQL](https://www.mysql.com/) - Database Management
 * [JUnit](https://junit.org/junit4/) - Unit Testing
 * [Mockito](https://site.mockito.org/) - Unit Testing
