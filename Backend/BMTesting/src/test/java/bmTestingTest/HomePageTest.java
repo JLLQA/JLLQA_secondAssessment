@@ -1,6 +1,7 @@
 package bmTestingTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
@@ -18,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
 import bmTestingPage.CreatePage;
+import bmTestingPage.DeletePage;
 import bmTestingPage.HomePage;
 import bmTestingPage.UpdatePage;
 
@@ -37,7 +39,6 @@ public class HomePageTest {
 	}
 
 	@Test
-	@Ignore
 	public void testHomePageNav() {
 		driver.get(URL + "/index.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -47,7 +48,6 @@ public class HomePageTest {
 	}
 
 	@Test
-	@Ignore
 	public void testUpdatePageNav() {
 		driver.get(URL + "/Pages/create.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -58,7 +58,6 @@ public class HomePageTest {
 	}
 
 	@Test
-	@Ignore
 	public void testDeletePageNav() {
 		driver.get(URL + "/Pages/update.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -69,7 +68,6 @@ public class HomePageTest {
 	}
 
 	@Test
-	@Ignore
 	public void testCreatePageNav() {
 		driver.get(URL + "/Pages/delete.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -80,7 +78,6 @@ public class HomePageTest {
 	}
 
 	@Test
-	@Ignore
 	public void testCreatePage() throws InterruptedException {
 		driver.get(URL + "/Pages/create.html");
 		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
@@ -94,7 +91,6 @@ public class HomePageTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testClear(){
 		driver.get(URL + "/Pages/create.html");
 		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
@@ -106,7 +102,6 @@ public class HomePageTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testCreateAlert() throws InterruptedException {
 		driver.get(URL + "/Pages/create.html");
 		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
@@ -120,19 +115,18 @@ public class HomePageTest {
 	}
 	
 	@Test
-	@Ignore
-	public void testUpdatePage() {
+	public void testUpdatePage() throws InterruptedException {
 		driver.get(URL + "/Pages/update.html");
 		UpdatePage bm = PageFactory.initElements(driver, UpdatePage.class);
-		bm.updateBM(4L, "Tim", "Bun", "Tomato", "Yes");
+		bm.updateBM(4L, "Jim", "Bun", "Tomato", "Yes");
 		bm.getUpdate().click();
-		WebElement uText = this.driver.findElement(By.xpath("//*[@id=\"display\"]/p[3]"));
-		String updated = "Name: Tim Items: Bun & Tomato Edible: Yes";
+		Thread.sleep(3000);
+		WebElement uText = this.driver.findElement(By.className("display"));
+		String updated = "Name: Jim Items: Bun & Tomato Edible: Yes";
 		assertTrue(uText.getText().contains(updated));
 	}
 	
 	@Test
-	@Ignore
 	public void testClearUpdate(){
 		driver.get(URL + "/Pages/update.html");
 		UpdatePage bm = PageFactory.initElements(driver, UpdatePage.class);
@@ -142,16 +136,34 @@ public class HomePageTest {
 		String check = createdText.getText();
 		assertEquals("",check);
 	}
-//	
-//	@Test
-//	public void testDeletePage() {
-//		
-//	}
+	
+	@Test
+	@Ignore
+	public void testDeletePage() throws InterruptedException {
+		driver.get(URL + "/Pages/delete.html");
+		DeletePage bm = PageFactory.initElements(driver, DeletePage.class);
+		bm.deleteBM(33L);
+		bm.getDeleteBtn().click();
+		Thread.sleep(1000);
+		WebElement createdText = this.driver.findElement(By.className("main"));
+		String check = createdText.getText();
+		assertFalse(check.contains(" 33."));
+	}
+	
+	@Test
+	public void testClearDelete(){
+		driver.get(URL + "/Pages/delete.html");
+		DeletePage bm = PageFactory.initElements(driver, DeletePage.class);
+		bm.deleteBM(3L);
+		bm.getClearBtn().click();
+		WebElement createdText = this.driver.findElement(By.id("delete"));
+		String check = createdText.getText();
+		assertEquals("",check);
+	}
 
-
-//	@After
-//	public void tearDown() {
-//		driver.close();
-//	}
+	@After
+	public void tearDown() {
+		driver.close();
+	}
 
 }
