@@ -52,18 +52,21 @@ public class BMServiceUnitTest {
 	
 	@Test
 	void testUpdate() {
-//		BM original = new BM(1L,"Jim", "Bun", "Tomato", "Yes");
-//		BM newBM = new BM("James", "Bun", "Tomato", "Yes");
-//
-//		Mockito.when(this.repo.findById(1L)).thenReturn(newBM);
-//		
-//		Optional<BM> OC = this.repo.findById(1L);
-//		 
-//		Mockito.when(this.repo.saveAndFlush(newBM)).thenReturn(newBM);
-//		
-//		assertEquals(newBM, this.service.update(1L, newBM));
-//		
-//		Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(newBM);
+		BM newBM = new BM("James", "Bun", "Tomato", "Yes");
+		Optional<BM> OC = Optional.of(new BM(1L, null, null, null, null));
+		BM updated = new BM(1L,
+				newBM.getName(),
+				newBM.getType1(),
+				newBM.getType2(),
+				newBM.getEdible());
+		
+		Mockito.when(this.repo.findById(1L)).thenReturn(OC);
+		Mockito.when(this.repo.saveAndFlush(updated)).thenReturn(updated);
+		
+		assertThat(this.service.update(1L, newBM)).isEqualTo(updated);
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
+		Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(updated);		
 	}
 	
 	@Test
@@ -75,6 +78,8 @@ public class BMServiceUnitTest {
 		assertEquals(true, this.service.remove(ID));
 
 		Mockito.verify(repo, Mockito.times(1)).deleteById(ID);
+		Mockito.verify(repo, Mockito.times(1)).existsById(ID);
+
 	}
 	
 }
