@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### Additional programs for development and testing purposes
 * [Eclipse IDE](https://www.eclipse.org/downloads/)
-* [Visual Studio Code]
+* [Visual Studio Code]()
 * [Postman]()
 * [SonarQube]()
 
@@ -130,6 +130,7 @@ Step 5. Press "Finish"
 *NOTE* The project ims should now be visible in the Project Explorer
 Step 6. Navigate from BM--> src/main/java --> com.qa.bm --> BmApplication.java
 Step 7. Right-click file and select "Run as" --> "Java application"
+```
 
 ## Running the tests
 
