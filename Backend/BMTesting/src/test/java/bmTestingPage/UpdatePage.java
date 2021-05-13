@@ -4,32 +4,43 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class UpdatePage {
-	@FindBy(id = "Name")
+	
+	@FindBy(id = "update")
+	private WebElement ID;
+	
+	@FindBy(id = "uName")
 	private WebElement Name;
 
-	@FindBy(id = "firstItem")
+	@FindBy(id = "uFirstItem")
 	private WebElement Item1;
 	
-	@FindBy(id = "secondItem")
+	@FindBy(id = "uSecondItem")
 	private WebElement Item2;
 	
-	@FindBy(id = "edible")
+	@FindBy(id = "uEdible")
 	private WebElement Edible;
 	
-	@FindBy(xpath = "//*[@id=\"create\"]")
-	private WebElement CreateBtn;
+	@FindBy(xpath = "/html/body/div[3]/div[1]/div[2]/button[1]")
+	private WebElement UpdateBtn;
 	
 	@FindBy(xpath = "/html/body/div[3]/div[1]/div[2]/button[2]")
 	private WebElement ClearBtn;
-	
-	@FindBy(id = "onSucces")
-	private WebElement Alert;
 
-	public void createBM(String name, String item1, String item2, String edible) {
+	public void updateBM(Long id, String name, String item1, String item2, String edible) {
+		String Id = id.toString();
+		ID.sendKeys(Id);
 		Name.sendKeys(name);
 		Item1.sendKeys(item1);
 		Item2.sendKeys(item2);
 		Edible.sendKeys(edible);
+	}
+	
+	public WebElement getID() {
+		return ID;
+	}
+
+	public void setID(WebElement iD) {
+		ID = iD;
 	}
 	
 	public WebElement getName() {
@@ -64,11 +75,11 @@ public class UpdatePage {
 		Edible = edible;
 	}
 	
-	public WebElement getCreate() {
-		return CreateBtn;
+	public WebElement getUpdate() {
+		return UpdateBtn;
 	}
-	
-	public WebElement getAlert() {
-		return Alert;
+
+	public WebElement getClearBtn() {
+		return ClearBtn;
 	}
 }

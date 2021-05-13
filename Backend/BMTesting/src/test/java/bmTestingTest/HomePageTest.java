@@ -16,12 +16,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import bmTestingPage.CreatePage;
 import bmTestingPage.HomePage;
+import bmTestingPage.UpdatePage;
 
 public class HomePageTest {
 
@@ -108,6 +106,7 @@ public class HomePageTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testCreateAlert() throws InterruptedException {
 		driver.get(URL + "/Pages/create.html");
 		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
@@ -120,13 +119,29 @@ public class HomePageTest {
 		assertTrue(check.contains(created));
 	}
 	
-//	@Test
-//	public void testUpdatePage() {
-//		driver.get(URL + "/Pages/update.html");
-//		UpdatePage bm = PageFactory.initElements(driver, UpdatePage.class);
-//		bm.updateBM(1L, "James", "Bun", "Tomato", "Yes");
-//		bm.getUpdate().click();
-//	}
+	@Test
+	@Ignore
+	public void testUpdatePage() {
+		driver.get(URL + "/Pages/update.html");
+		UpdatePage bm = PageFactory.initElements(driver, UpdatePage.class);
+		bm.updateBM(4L, "Tim", "Bun", "Tomato", "Yes");
+		bm.getUpdate().click();
+		WebElement uText = this.driver.findElement(By.xpath("//*[@id=\"display\"]/p[3]"));
+		String updated = "Name: Tim Items: Bun & Tomato Edible: Yes";
+		assertTrue(uText.getText().contains(updated));
+	}
+	
+	@Test
+	@Ignore
+	public void testClearUpdate(){
+		driver.get(URL + "/Pages/update.html");
+		UpdatePage bm = PageFactory.initElements(driver, UpdatePage.class);
+		bm.updateBM(1L, "Jimmy", "Bun", "Tomato", "Yes");
+		bm.getClearBtn().click();
+		WebElement createdText = this.driver.findElement(By.id("uName"));
+		String check = createdText.getText();
+		assertEquals("",check);
+	}
 //	
 //	@Test
 //	public void testDeletePage() {
