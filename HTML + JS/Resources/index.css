@@ -7,6 +7,15 @@ body {
     margin: 0;
 }
 
+.headerhome {
+    text-align: center;
+    color: #12B00B;
+    text-shadow: -2px -2px 0 #C6FC28, 2px -2px #C6FC28, -2px 2px #C6FC28, 2px 2px #C6FC28;
+    background: #b00b69;
+    font-size: 100px;
+    flex: 30%;
+}
+
 .headermain {
     padding: 10px;
     text-align: center;
