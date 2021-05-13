@@ -18,7 +18,7 @@ import com.qa.bm.domain.BM;
 import com.qa.bm.repo.BMRepo;
 
 @SpringBootTest
-public class BMServiceUnitTest {
+class BMServiceUnitTest {
 	
 	@Autowired
 	private BMServiceDB service; 
@@ -70,7 +70,7 @@ public class BMServiceUnitTest {
 	}
 	
 	@Test
-	public void testDelete() {
+	void testDelete() {
 		final long ID = 1L;
 
 		Mockito.when(repo.existsById(ID)).thenReturn(false);
