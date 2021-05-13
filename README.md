@@ -127,9 +127,7 @@ Step 3b. Import existing projects --> Mavern --> Existing Mavern project --> Bro
 Step 4. Navigate to location of project, click folder and press "Select Folder"
 *NOTE* You will know it has been successfully added when a pom.xml appears in the projects box
 Step 5. Press "Finish"
-*NOTE* The project ims should now be visible in the Project Explorer
-Step 6. Navigate from BM--> src/main/java --> com.qa.bm --> BmApplication.java
-Step 7. Right-click file and select "Run as" --> "Java application"
+*NOTE* The project BM and BMTesting should now be visible in the Project Explorer
 ```
 
 ## Running the tests
@@ -138,7 +136,7 @@ To run the automated unit and integration tests for the system
 
 ```
 Step 1. Follow the installing steps above to ensure the project is within Eclipse
-Step 2. Right-click the project in the project manager and select "Run as" --> "JUnit Test"
+Step 2. Right-click the project `BM` in the project manager and select "Run as" --> "JUnit Test"
 Step 3. The automated tests will then be carried out
 ```
 
@@ -146,30 +144,67 @@ To run the automated user-acceptance tests for the system
 
 ```
 Step 1. Follow the installing steps above to ensure the project is within Eclipse
-Step 2. Right-click the project in the project manager and select "Run as" --> "JUnit Test"
-Step 3. The automated tests will then be carried out
+Step 2. Open the file `application properties` located in src/main/resources in project `BM`
+Step 3. Change "prod" to "deve"
+Step 4. Right-click the project `BM` in the project manager and select "Run as" --> "Spring Boot App"
+Step 5. Right-click the project `BMTesting` in the project manager and select "Run as" --> "JUnit Test"
 ```
 
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+A unit is the smallest piece of code that can be isolated logically within the system.
 
-```
-Give an example
+Unit testing is the automated method in which each unit is tested in turn.
+
+An example of a unit test can be seen below:
+
+```java
+void testDelete() {
+	final long ID = 1L;
+
+	Mockito.when(repo.existsById(ID)).thenReturn(false);
+
+	assertEquals(true, this.service.remove(ID));
+
+	Mockito.verify(repo, Mockito.times(1)).deleteById(ID);
+	Mockito.verify(repo, Mockito.times(1)).existsById(ID);
+}
 ```
 
 ### Integration Tests 
-Explain what these tests test, why and how to run them
+A unit is the smallest piece of code that can be isolated logically within the system.
 
-```
-Give an example
+Unit testing is the automated method in which each unit is tested in turn.
+
+An example of a unit test can be seen below:
+
+```java
+void testCreate() throws Exception {
+	this.mockMVC
+		.perform(post("/create").contentType(MediaType.APPLICATION_JSON)
+			.content(this.mapper.writeValueAsString(new BM("Jim", "Bun", "Tomato", "Yes"))))
+		.andExpect(status().isCreated())
+		.andExpect(content().json(this.mapper.writeValueAsString(new BM(2L, "Jim", "Bun", "Tomato", "Yes"))));
+}
 ```
 
 ### User-Acceptance Tests 
-Explain what these tests test, why and how to run them
+A unit is the smallest piece of code that can be isolated logically within the system.
 
-```
-Give an example
+Unit testing is the automated method in which each unit is tested in turn.
+
+An example of a unit test can be seen below:
+
+```java
+public void testClearDelete(){
+	driver.get(URL + "/Pages/delete.html");
+	DeletePage bm = PageFactory.initElements(driver, DeletePage.class);
+	bm.deleteBM(3L);
+	bm.getClearBtn().click();
+	WebElement createdText = this.driver.findElement(By.id("delete"));
+	String check = createdText.getText();
+	assertEquals("",check);
+}
 ```
 
 ## Deployment
@@ -177,11 +212,13 @@ Give an example
 How to deploy
 ```
 Step 1. Clone a copy of the repository to your local machine.
-Step 2. Navigate to the location of the ims-0.0.1-jar-with-dependencies.jar file.
-Step 3. Right-click the folder and select "Git Bash Here".
-Step 4. Once in the Git Bash terminal enter the following command:
+Step 2. Follow the steps above from [Installing](### Installing)
+Step 3. Navigate from BM--> src/main/resources --> application-prod.properties and follow the sintructions within the file
+Step 4. Navigate to the location of the BM-0.0.1-SNAPSHOT.jar file in clone repository folder.
+Step 5. Right-click in the folder and select "Git Bash Here".
+Step 6. Once in the Git Bash terminal enter the following command:
 	java -jar BM-0.0.1-SNAPSHOT.jar
-Step 5. The application should be initialised when you see Spring in ASCII art appear on screen	
+Step 7. The application should be initialised when you see Spring in ASCII art appear on screen	
 ```
 
 ## Built With
