@@ -59,9 +59,9 @@ const createBM = () => {
             ALERT.setAttribute("class", "alert alert-success");
             ALERT.innerHTML = "BurgerMon has been successfully created!";
             setTimeout(() => {
+                window.location.reload();
                 ALERT.removeAttribute("class");
                 ALERT.innerHTML = "";
-                window.location.reload();
             }, 3000);
         })
         .catch((err) => {
