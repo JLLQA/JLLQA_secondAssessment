@@ -111,6 +111,8 @@ Step 2.
 ```
 Step 1. Navigate to the link above --> "Download packages" and download the relevant option for your operating system.
 Step 2. 
+folder StartSonar.bat
+mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin
 ```
 
 ### Installing
