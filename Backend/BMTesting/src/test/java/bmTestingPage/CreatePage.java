@@ -22,9 +22,6 @@ public class CreatePage {
 	
 	@FindBy(xpath = "/html/body/div[3]/div[1]/div[2]/button[2]")
 	private WebElement ClearBtn;
-	
-	@FindBy(id = "onSucces")
-	private WebElement Alert;
 
 	public void createBM(String name, String item1, String item2, String edible) {
 		Name.sendKeys(name);
@@ -69,7 +66,7 @@ public class CreatePage {
 		return CreateBtn;
 	}
 	
-	public WebElement getAlert() {
-		return Alert;
+	public WebElement getClear() {
+		return ClearBtn;
 	}
 }

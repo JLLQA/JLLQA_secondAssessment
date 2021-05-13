@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -38,6 +39,7 @@ public class HomePageTest {
 	}
 
 	@Test
+	@Ignore
 	public void testHomePageNav() {
 		driver.get(URL + "/index.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -47,6 +49,7 @@ public class HomePageTest {
 	}
 
 	@Test
+	@Ignore
 	public void testUpdatePageNav() {
 		driver.get(URL + "/Pages/create.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -57,6 +60,7 @@ public class HomePageTest {
 	}
 
 	@Test
+	@Ignore
 	public void testDeletePageNav() {
 		driver.get(URL + "/Pages/update.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -67,6 +71,7 @@ public class HomePageTest {
 	}
 
 	@Test
+	@Ignore
 	public void testCreatePageNav() {
 		driver.get(URL + "/Pages/delete.html");
 		HomePage main = PageFactory.initElements(driver, HomePage.class);
@@ -77,18 +82,41 @@ public class HomePageTest {
 	}
 
 	@Test
+	@Ignore
 	public void testCreatePage() throws InterruptedException {
 		driver.get(URL + "/Pages/create.html");
 		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
-//		HomePage main = PageFactory.initElements(driver, HomePage.class);
 		bm.createBM("Jimmy", "Bun", "Tomato", "Yes");
 		bm.getCreate().click();
-//		main.getCreateNav().click();
 		Thread.sleep(5000);
 		WebElement createdText = this.driver.findElement(By.className("main"));
 		String created = "Name: Jimmy Items: Bun & Tomato Edible: Yes";
 		String check = createdText.getText();
-		System.out.println(check);
+		assertTrue(check.contains(created));
+	}
+	
+	@Test
+	@Ignore
+	public void testClear(){
+		driver.get(URL + "/Pages/create.html");
+		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
+		bm.createBM("Jimmy", "Bun", "Tomato", "Yes");
+		bm.getClear().click();
+		WebElement createdText = this.driver.findElement(By.id("Name"));
+		String check = createdText.getText();
+		assertEquals("",check);
+	}
+	
+	@Test
+	public void testCreateAlert() throws InterruptedException {
+		driver.get(URL + "/Pages/create.html");
+		CreatePage bm = PageFactory.initElements(driver, CreatePage.class);
+		bm.createBM("Jimmy", "Bun", "Tomato", "Yes");
+		bm.getCreate().click();
+		Thread.sleep(1000);
+		WebElement createdText = this.driver.findElement(By.className("alert"));
+		String created = "BurgerMon has been successfully created!";
+		String check = createdText.getText();
 		assertTrue(check.contains(created));
 	}
 	
