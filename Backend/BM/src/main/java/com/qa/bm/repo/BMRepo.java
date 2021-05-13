@@ -8,5 +8,4 @@ import com.qa.bm.domain.BM;
 @Repository
 public interface BMRepo extends JpaRepository<BM, Long> {
 
-//	BM findByName(String name);
 }

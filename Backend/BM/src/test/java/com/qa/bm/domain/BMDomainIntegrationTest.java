@@ -7,10 +7,10 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
 @SpringBootTest
-public class BMDomainIntegrationTest {
+class BMDomainIntegrationTest {
 
 	@Test
-	public void testEquals() {
+	void testEquals() {
 		EqualsVerifier.simple().forClass(BM.class)
 		.suppress(Warning.ALL_FIELDS_SHOULD_BE_USED)
 		.verify();

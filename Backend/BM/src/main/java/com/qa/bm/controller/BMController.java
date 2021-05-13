@@ -31,7 +31,7 @@ public class BMController {
 	// CREATE
 	@PostMapping("/create")
 	public ResponseEntity<BM> createBM(@RequestBody BM bm) {
-		return new ResponseEntity<BM>(this.service.create(bm), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.service.create(bm), HttpStatus.CREATED);
 	}
 
 	// READ
@@ -50,7 +50,7 @@ public class BMController {
 	// UPDATE
 	@PutMapping("/update/{id}")
 	public ResponseEntity<BM> updateBM(@PathVariable Long id, @RequestBody BM newObject) {
-		return new ResponseEntity<BM>(this.service.update(id, newObject), HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(this.service.update(id, newObject), HttpStatus.ACCEPTED);
 	}
 
 }

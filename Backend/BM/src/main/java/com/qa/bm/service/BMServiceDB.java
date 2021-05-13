@@ -35,15 +35,16 @@ public class BMServiceDB implements BMService {
 
 	@Override
 	public BM update(Long id, BM newBM) {
-		Optional<BM> optionalCharacter = this.repo.findById(id);
-		BM newM = optionalCharacter.get();
+		Optional<BM> optionalBM = this.repo.findById(id);
+		
+		BM newM = optionalBM.get();
 
 		newM.setName(newBM.getName());
 		newM.setType1(newBM.getType1());
 		newM.setType2(newBM.getType2());
 		newM.setEdible(newBM.getEdible());
 
-        return this.repo.saveAndFlush(newM);
+		return this.repo.saveAndFlush(newM);
 	}
 
 }

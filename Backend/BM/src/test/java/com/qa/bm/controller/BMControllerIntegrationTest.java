@@ -33,7 +33,7 @@ import com.qa.bm.domain.BM;
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:schema.sql","classpath:data.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("deve")
-public class BMControllerIntegrationTest {
+class BMControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMVC;
