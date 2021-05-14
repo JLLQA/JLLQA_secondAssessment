@@ -1,7 +1,7 @@
 Coverage: 89.2%
 # Practical Project: Hobby Web Application
 
-This project encapsulated concepts from all core training modules by creating a working inventory management system. This system successfully stores customer, item and order details in a MySQL database, hosted locally using MySQL Workbench, all of which are user interactable via a command-line interface. The development process used Java to design the back-end, with Mockito and JUnit for unit testing.
+This project aimed at creating a Spring Boot web application for creating and managing Burger Monsters. The front-end was built using HTML and CSS setting up the API calls via JavaScript to get the data from my database, hosted on a locally on MySQL Workbench, which was connected by the back-end, designed using the Java Spring framework. SonarQube was used to improve the code base quality via static analysis and Selenium, Mockito and Junit to handle the testing.
 
 ## Getting Started
 
@@ -16,9 +16,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### Additional programs for development and testing purposes
 * [Eclipse IDE](https://www.eclipse.org/downloads/)
-* [Visual Studio Code]()
-* [Postman]()
-* [SonarQube]()
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Postman](https://www.postman.com/downloads/)
+* [SonarQube](https://www.sonarqube.org/downloads/)
 
 #### What to do if you don't have Git Bash
 ```
@@ -91,28 +91,38 @@ Step 15. Click "OK" until all windows are closed.
 #### What to do if you don't have Eclipse IDE
 ```
 Step 1. Navigate to the link above --> "Download packages" and download the relevant option for your operating system.
-Step 2. Navigate to the download location and double-click to run the executeable and click "Eclipse IDE for Java Developers" followed by "Install"
-	*NOTE* you must have a jdk installed alraedy before installing Eclipse or it will not install correctly
+Step 2. Navigate to the download location and double-click to run the executeable and click "Eclipse IDE for Java Developers" followed by "Install".
+	*NOTE* you must have a jdk installed alraedy before installing Eclipse or it will not install correctly.
 ```
 
 #### What to do if you don't have Visual Studio Code
 ```
-Step 1. 
-Step 2. 
+Step 1. Navigate to the link above --> "Download".
+Step 2. Navigate to the download location and double-click to run the executeable.
+Step 3. Accept the agreement and click "Next".
+Step 4. Leave defaults and click "Next".
+Step 5. Click install.
 ```
 
 #### What to do if you don't have Postman
 ```
-Step 1. Navigate to the link above --> "Download packages" and download the relevant option for your operating system.
-Step 2.
+Step 1. Navigate to the link above --> "Download the app" and download the relevant option for your operating system.
+Step 2. Navigate to the download location and double-click to run the executeable.
 ```
 
 #### What to do if you don't have SonarQube
 ```
-Step 1. Navigate to the link above --> "Download packages" and download the relevant option for your operating system.
-Step 2. 
-folder StartSonar.bat
-mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin
+Step 1. Navigate to the link above --> Community --> "Download for free".
+	*NOTE* the download should start automatically.
+Step 2. Unzip the folder.
+Step 3. Navigate to bin\windows-x86-64 --> StartSonar.bat and double click the file.
+	*NOTE* cmd should popup if done correctly.
+Step 4. Navigate to the location of the clone repository --> Backend --> BM
+Step 5. Right click in the folder --> Git Bash here.
+Step 6. Once in the Git Bash enter the following command:
+	mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin
+Step 7. Open a web browser and go to http://localhost:9000
+	*NOTE* if you are presented with "Log In to SonarQube" it has worked correctly.
 ```
 
 ### Installing
@@ -121,15 +131,16 @@ A step by step guide to get a development environment up and running.
 
 ```
 Step 1. Clone the repository to your local machine.
-Step 2. Launch Eclipse
+Step 2. Launch Eclipse.
 	*If you already are using Eclipse and have created a project previously*
 Step 3a. Navigate File --> import --> Mavern --> Existing Mavern project --> Browse
 	*If you are running Eclipse for the first time*
 Step 3b. Import existing projects --> Mavern --> Existing Mavern project --> Browse
-Step 4. Navigate to location of project, click folder and press "Select Folder"
-*NOTE* You will know it has been successfully added when a pom.xml appears in the projects box
+Step 4. Navigate to location of project, click folder and press "Select Folder".
+	*NOTE* You will know it has been successfully added when a pom.xml appears in the projects box.
 Step 5. Press "Finish"
-*NOTE* The project BM and BMTesting should now be visible in the Project Explorer
+	*NOTE* The project BM should now be visible in the Project Explorer
+	*NOTE* Repeat for BM testing
 ```
 
 ## Running the tests
@@ -137,19 +148,19 @@ Step 5. Press "Finish"
 To run the automated unit and integration tests for the system
 
 ```
-Step 1. Follow the installing steps above to ensure the project is within Eclipse
-Step 2. Right-click the project `BM` in the project manager and select "Run as" --> "JUnit Test"
-Step 3. The automated tests will then be carried out
+Step 1. Follow the installing steps above to ensure the project is within Eclipse.
+Step 2. Right-click the project `BM` in the project manager and select "Run as" --> "JUnit Test".
+Step 3. The automated tests will then be carried out.
 ```
 
 To run the automated user-acceptance tests for the system
 
 ```
-Step 1. Follow the installing steps above to ensure the project is within Eclipse
-Step 2. Open the file `application properties` located in src/main/resources in project `BM`
-Step 3. Change "prod" to "deve"
-Step 4. Right-click the project `BM` in the project manager and select "Run as" --> "Spring Boot App"
-Step 5. Right-click the project `BMTesting` in the project manager and select "Run as" --> "JUnit Test"
+Step 1. Follow the installing steps above to ensure the project is within Eclipse.
+Step 2. Open the file `application properties` located in src/main/resources in project `BM`.
+Step 3. Change "prod" to "deve".
+Step 4. Right-click the project `BM` in the project manager and select "Run as" --> "Spring Boot App".
+Step 5. Right-click the project `BMTesting` in the project manager and select "Run as" --> "JUnit Test".
 ```
 
 ### Unit Tests 
@@ -174,11 +185,9 @@ void testDelete() {
 ```
 
 ### Integration Tests 
-A unit is the smallest piece of code that can be isolated logically within the system.
+Integration testing is when individual units are integrated or combined and tested as one.
 
-Unit testing is the automated method in which each unit is tested in turn.
-
-An example of a unit test can be seen below:
+An example of a integration test can be seen below:
 
 ```java
 void testCreate() throws Exception {
@@ -191,11 +200,9 @@ void testCreate() throws Exception {
 ```
 
 ### User-Acceptance Tests 
-A unit is the smallest piece of code that can be isolated logically within the system.
+A user-acceptance test is: ["A process of verifying that a solution works for the user"](https://en.m.wikipedia.org/wiki/Acceptance_testing#User_acceptance_testing)
 
-Unit testing is the automated method in which each unit is tested in turn.
-
-An example of a unit test can be seen below:
+An example of a user-acceptance test can be seen below:
 
 ```java
 public void testClearDelete(){
@@ -215,7 +222,7 @@ How to deploy
 ```
 Step 1. Clone a copy of the repository to your local machine.
 Step 2. Follow the steps above from [Installing](### Installing)
-Step 3. Navigate from BM--> src/main/resources --> application-prod.properties and follow the sintructions within the file
+Step 3. Navigate from BM--> src/main/resources --> application-prod.properties and follow the instructions within the file
 Step 4. Navigate to the location of the BM-0.0.1-SNAPSHOT.jar file in clone repository folder.
 Step 5. Right-click in the folder and select "Git Bash Here".
 Step 6. Once in the Git Bash terminal enter the following command:
@@ -233,7 +240,7 @@ Step 7. The application should be initialised when you see Spring in ASCII art a
 * [MySQL](https://www.mysql.com/) - Database Management
 * [JUnit](https://junit.org/junit4/) - Unit Testing
 * [Mockito](https://site.mockito.org/) - Unit Testing
-* [Selenium]() - User-Acceptancce Testing
+* [Selenium](https://www.selenium.dev/) - User-Acceptancce Testing
 
 ## Versioning
 
