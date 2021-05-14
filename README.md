@@ -227,7 +227,9 @@ Step 4. Navigate to the location of the BM-0.0.1-SNAPSHOT.jar file in clone repo
 Step 5. Right-click in the folder and select "Git Bash Here".
 Step 6. Once in the Git Bash terminal enter the following command:
 	java -jar BM-0.0.1-SNAPSHOT.jar
-Step 7. The application should be initialised when you see Spring in ASCII art appear on screen	
+Step 7. The application should be initialised when you see Spring in ASCII art appear on screen
+Step 8. Once initialzed open a web browser and go to:
+	http://localhost:8080
 ```
 
 ## Built With
